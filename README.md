@@ -1,0 +1,1 @@
+ru.senchenko.e-shop
