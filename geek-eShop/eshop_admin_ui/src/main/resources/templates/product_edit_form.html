@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body class="bg-light">
+
+<nav th:replace="fragments/header :: header"></nav>
+
+<div class="d-flex">
+
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <div class="content p-4">
+        <h2 class="mb-4">Edit Product Form</h2>
+        <form th:action="@{/products/edit}" th:object="${product}" method="POST" enctype="multipart/form-data">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <input th:field="*{id}" type="hidden" class="form-control">
+                    <div class="form-group">
+                        <label for="title">Product name</label>
+                        <input th:field="*{title}" type="text" class="form-control" id="title"
+                               placeholder="Enter Product name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Product description</label>
+                        <textarea th:field="*{description}" class="form-control" id="description" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="brand">Brand</label>
+                        <select class="form-control form-control-sm" id="brand" th:field="*{brand}" required>
+                            <option th:each="b : ${brands}"
+                                    th:text="${b.title}"
+                                    th:value="${b.id}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input th:field="*{price}" type="text" class="form-control" id="price"
+                               placeholder="Enter The Price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select class="form-control form-control-sm" id="category" th:field="*{category}" required>
+                            <option th:each="c : ${categories}"
+                                    th:text="${c.title}"
+                                    th:value="${c.id}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPictures">Product image</label>
+                        <input th:field="*{newPictures}" type="file" class="form-control" id="newPictures"
+                               placeholder="Upload new product picture" multiple>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-pill">Save</button>
+                    <a class="btn btn-primary btn-pill" th:href="@{/products}">Back</a>
+                </div>
+            </div>
+        </form>
+        <div class="container-fluid mb-4">
+            <div class="card-columns" style="column-count: 5">
+                <div class="card" th:each="pict : ${pictures}">
+                    <div class="card-header" style="text-align: right">
+                        <a th:href="@{/pictures/delete/{pictureId}(pictureId=${pict.id})}"
+                           class="btn btn-icon btn-pill btn-primary"
+                           data-toggle="tooltip" title="" data-original-title="Delete"><i
+                                class="fa fa-fw fa-trash"></i></a>
+                    </div>
+                    <img class="card-img-bottom" th:src="@{/pictures/{pictureId}(pictureId=${pict.id})}"
+                         width="40%"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:replace="fragments/footer :: scripts"></script>
+
+</body>
+</html>

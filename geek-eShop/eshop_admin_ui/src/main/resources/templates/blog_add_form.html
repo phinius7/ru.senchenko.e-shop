@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body class="bg-light">
+
+<nav th:replace="fragments/header :: header"></nav>
+
+<div class="d-flex">
+
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <div class="content p-4">
+        <h2 class="mb-4">Add Category Form</h2>
+
+        <form method="post" th:action="@{/blogs/add}" th:object="${blog}" enctype="multipart/form-data">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="title">Blog name</label>
+                        <input th:field="*{title}" type="text" class="form-control" id="title"
+                               placeholder="Enter Category name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">The Content</label>
+                        <textarea th:field="*{content}" class="form-control" id="content" rows="8"
+                                  placeholder="Enter blog's content" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="picture">Category image</label>
+                        <input th:field="*{newPictures}" type="file" class="form-control" id="picture"
+                               placeholder="Upload new blog picture">
+                    </div>
+                    <button class="btn btn-success btn-pill" type="submit">Add</button>
+                    <a class="btn btn-danger btn-pill" th:href="@{/blogs/add}">Clear</a>
+                    <a class="btn btn-primary btn-pill" th:href="@{/blogs}">Back</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script th:replace="fragments/footer :: scripts"></script>
+
+</body>
+</html>

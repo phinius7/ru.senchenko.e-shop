@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body class="bg-light">
+
+<nav th:replace="fragments/header :: header"></nav>
+
+<div class="d-flex">
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <div class="content p-4">
+        <h2 class="mb-4">View category list</h2>
+        <div class="card mb-4">
+            <div class="card-body">
+                <table id="categories" class="table table-hover" cellspacing="0" width="100%">
+                    <thead class="thead-light">
+                    <tr>
+                        <th>Blog</th>
+                        <th>Create Date</th>
+                        <th>Modify Date</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="b : ${blogs}">
+                        <td th:text="${b.title}"></td>
+                        <td th:text="${b.createDate}"></td>
+                        <td th:text="${b.modifyDate}"></td>
+                        <td>
+                            <a th:href="@{'/blogs/edit/' + ${b.id}}" class="btn btn-icon btn-pill btn-primary"
+                               data-toggle="tooltip" title="" data-original-title="Edit"><i
+                                    class="fa fa-fw fa-edit"></i></a>
+                            <a th:href="@{'/blogs/delete/' + ${b.id}}" class="btn btn-icon btn-pill btn-danger"
+                               data-toggle="tooltip" title="" data-original-title="Delete"><i
+                                    class="fa fa-fw fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-primary btn-lg btn-block btn-pill" th:href="@{'/blogs/add/'}">Create</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:replace="fragments/footer :: scripts"></script>
+<script th:src="@{/js/datatables.min.js}"></script>
+<script>
+    $(document).ready(function () {
+        $('#categories').DataTable();
+    });
+</script>
+
+</body>
+</html>

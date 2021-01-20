@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+<div th:replace="fragments/header :: top"></div>
+
+<nav th:replace="fragments/header :: main-header"></nav>
+
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>ABOUT ME</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a th:href="@{'/'}">Home</a></li>
+                    <li class="breadcrumb-item active">About me</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="about-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="col-12">
+                    <h2 class="noo-sh-title">Let me introduce</h2>
+                </div>
+                <div class="col-sm-6">
+                    <div class="hover-team">
+                        <div class="our-team"><img th:src="@{images/img-1.jpg}" alt=""/>
+                            <div class="team-content">
+                                <h3 class="title">Artem Senchenko</h3> <span class="post">Developer</span></div>
+                            <ul class="social">
+                                <li>
+                                    <a href="https://www.facebook.com/skylighterby/" class="fab fa-facebook"></a>
+                                </li>
+                                <li>
+                                    <a href="https://vk.com/phinius" class="fab fa-vk"></a>
+                                </li>
+                                <li>
+                                    <a href="https://t.me/phinius" class="fab fa-telegram"></a>
+                                </li>
+                            </ul>
+                            <div class="icon"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                        </div>
+                        <hr class="my-0">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="noo-sh-title-top">My Project <span>FreshShop</span></h2>
+                <p>"Hello, my name is Artem Senchenko. I was born in Belarus, in Vitebsk. At the moment I study Java. I like it.
+                It much better than my job now. Some times education seems too much hard, but in sum I handle it.</p>
+                <p>A few words about this project. It a Web Shop, it's calling FreshShop. This shop will be help buy a products.
+                Based on free templates from https://www.free-css.com/</p>
+                <a class="btn hvr-hover" href="#">Read More</a>
+            </div>
+        </div>
+        <div class="row my-5">
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner">
+                    <h3>My goal</h3>
+                    <p>Become a highly qualified IT specialist. </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner">
+                    <h3>My plan</h3>
+                    <p>Get a job in IT. In parallel, learn new information and improve your programming skills. </p>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-4">
+                <div class="service-block-inner">
+                    <h3>My dream</h3>
+                    <p>Work for IT giants like Facebook, Amazon, Apple, Microsoft or Google. </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="fragments/instagram :: insta-box"></div>
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/footer :: copyright"></div>
+
+<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+<script th:replace="fragments/footer :: scripts"></script>
+</body>
+
+</html>

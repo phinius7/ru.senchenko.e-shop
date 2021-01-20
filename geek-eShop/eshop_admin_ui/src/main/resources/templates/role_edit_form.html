@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body class="bg-light">
+
+<nav th:replace="fragments/header :: header"></nav>
+
+<div class="d-flex">
+
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <div class="content p-4">
+        <h2 class="mb-4">Edit Role Form</h2>
+        <form th:action="@{/roles/edit}" th:object="${role}" method="POST">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <input th:field="*{id}" type="hidden" class="form-control">
+                    <div class="form-group">
+                        <label for="title">Role name</label>
+                        <input th:field="*{title}" type="text" class="form-control" id="title"
+                               placeholder="Enter Role name" required>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-pill">Save</button>
+                    <a class="btn btn-primary btn-pill" th:href="@{/roles}">Back</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script th:replace="fragments/footer :: scripts"></script>
+
+</body>
+</html>

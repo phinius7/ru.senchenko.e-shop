@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body class="bg-light">
+
+<nav th:replace="fragments/header :: header"></nav>
+
+<div class="d-flex">
+
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+
+    <div class="content p-4">
+        <h2 class="mb-4">Edit Category Form</h2>
+        <form th:action="@{/blogs/edit}" th:object="${blog}" method="POST" enctype="multipart/form-data">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <input th:field="*{id}" type="hidden" class="form-control">
+                    <div class="form-group">
+                        <label for="title">Blog name</label>
+                        <input th:field="*{title}" type="text" class="form-control" id="title"
+                               placeholder="Enter Category name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">The Content</label>
+                        <textarea th:field="*{content}" class="form-control" id="content" rows="8"
+                                  placeholder="Enter blog's content" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="picture">Category image</label>
+                        <input th:field="*{newPictures}" type="file" class="form-control" id="picture"
+                               placeholder="Upload new category picture">
+                    </div>
+                    <button type="submit" class="btn btn-success btn-pill">Save</button>
+                    <a class="btn btn-primary btn-pill" th:href="@{/blogs}">Back</a>
+                </div>
+            </div>
+        </form>
+        <div class="container-fluid mb-4">
+            <div class="card-columns" style="column-count: 5">
+                <div class="card" th:each="pict : ${pictures}">
+                    <div class="card-header" style="text-align: right">
+                        <a th:href="@{/pictures/delete/{pictureId}(pictureId=${pict.id})}"
+                           class="btn btn-icon btn-pill btn-primary"
+                           data-toggle="tooltip" title="" data-original-title="Delete"><i
+                                class="fa fa-fw fa-trash"></i></a>
+                    </div>
+                    <img class="card-img-bottom" th:src="@{/pictures/{pictureId}(pictureId=${pict.id})}"
+                         width="40%"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:replace="fragments/footer :: scripts"></script>
+
+</body>
+</html>

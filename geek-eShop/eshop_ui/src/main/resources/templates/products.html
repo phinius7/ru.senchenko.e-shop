@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+<div th:replace="fragments/header :: top"></div>
+
+<nav th:replace="fragments/header :: main-header"></nav>
+
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>PRODUCT LIST</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a th:href="@{'/'}">Home</a></li>
+                    <li class="breadcrumb-item active"> Product List</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <table th:id="products" class="table table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Brand</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p : ${products}">
+                <td align="center">
+                    <img th:src="@{{pictureServiceUrl}/pictures/{pictureId}(pictureId=${p.pictures.get(0).id}, pictureServiceUrl=${pictureServiceUrl})}"
+                         th:width="100"/>
+                </td>
+                <td th:text="${p.title}"/>
+                <td th:text="${p.brand.title}"/>
+                <td th:text="${p.price}"/>
+                <td align="center">
+                    <a class="btn hvr-hover" th:href="@{'/products/see/' + ${p.id}}" title="See more">See more</a>
+                    <a class="btn hvr-hover" th:href="@{'/cart/add/' + ${p.id}}" title="Cart">Add to Cart</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br>
+
+<div th:replace="fragments/instagram :: insta-box"></div>
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/footer :: copyright"></div>
+
+<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+<script th:replace="fragments/footer :: scripts"></script>
+<script th:src="@{/js/datatables.min.js}"></script>
+<script>
+    $(document).ready(function () {
+        $('#products').DataTable();
+    });
+</script>
+
+</body>
+</html>

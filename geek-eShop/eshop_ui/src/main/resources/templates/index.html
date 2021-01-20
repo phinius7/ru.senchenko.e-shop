@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+<div th:replace="fragments/header :: top"></div>
+
+<nav th:replace="fragments/header :: main-header"></nav>
+
+<!-- Start Slider -->
+<div id="slides-shop" class="cover-slides">
+    <ul class="slides-container">
+        <li class="text-center">
+            <img th:src="@{images/banner-01.jpg}" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> FreshShop</strong></h1>
+                        <p class="m-b-40">It is my first big project on Java Spring. Enjoy.</p>
+                        <p><a class="btn hvr-hover" th:href="@{'/products'}">Go shopping</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img th:src="@{images/banner-02.jpg}" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> FreshShop</strong></h1>
+                        <p class="m-b-40">This is project of Fresh shop. Place, where can buy fresh products.</p>
+                        <p><a class="btn hvr-hover" th:href="@{'/products'}">See products</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="text-center">
+            <img th:src="@{images/banner-03.jpg}" alt="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 class="m-b-20"><strong>Welcome To <br> FreshShop</strong></h1>
+                        <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to
+                            see any changes in performance over time.</p>
+                        <p><a class="btn hvr-hover" th:href="@{'/products'}">Shop now</a></p>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="slides-navigation">
+        <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
+        <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
+    </div>
+</div>
+<!-- End Slider -->
+
+<!-- Start Categories  -->
+<div class="categories-shop">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>See Categories</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" th:each="category : ${categories}">
+                <div class="shop-cat-box">
+                    <img class="img-fluid" th:src="@{{pictureServiceUrl}/pictures/{pictureId}(pictureId=${category.pictures.get(0).id}, pictureServiceUrl=${pictureServiceUrl})}"/>
+                    <a class="btn hvr-hover" th:href="@{'/categories/product_list/' + ${category.code}}"
+                       th:text="${category.title}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Categories -->
+
+<!-- Start Products  -->
+<div class="products-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Our Products</h1>
+                    <p>Always fresh products</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6" th:each="product : ${products}">
+                <div class="products-single fix">
+                    <div class="box-img-hover">
+                        <img th:src="@{{pictureServiceUrl}/pictures/{pictureId}(pictureId=${product.pictures.get(0).id}, pictureServiceUrl=${pictureServiceUrl})}"
+                             class="img-fluid" alt="Image">
+                        <div class="mask-icon">
+                            <ul>
+                                <li><a th:href="@{'/products/see/' + ${product.id}}" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                            </ul>
+                            <a class="cart" th:href="@{'/cart/add/' + ${product.id}}">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="why-text">
+                        <h4>
+                            <a th:text="${product.title}"></a>
+                        </h4>
+                        <h5 th:text="${product.price}"></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Products  -->
+
+<!-- Start Blog  -->
+<div class="latest-blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Our Blog's</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 col-xl-4" th:each="blog: ${blogs}">
+                <div class="blog-box">
+                    <div class="blog-img">
+                        <img class="img-fluid" th:src="@{{pictureServiceUrl}/pictures/{pictureId}(pictureId=${blog.pictures.get(0).id}, pictureServiceUrl=${pictureServiceUrl})}"/>
+                    </div>
+                    <div class="blog-content">
+                        <div class="title-blog">
+                            <h3 th:text="${blog.title}"></h3>
+                        </div>
+                        <ul class="option-blog">
+                            <li><a th:href="@{'blogs/' + ${blog.id}}"><i class="fas fa-eye"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Blog  -->
+
+<div th:replace="fragments/instagram :: insta-box"></div>
+<div th:replace="fragments/footer :: footer"></div>
+<div th:replace="fragments/footer :: copyright"></div>
+
+<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+<script th:replace="fragments/footer :: scripts"></script>
+
+</body>
+</html>
