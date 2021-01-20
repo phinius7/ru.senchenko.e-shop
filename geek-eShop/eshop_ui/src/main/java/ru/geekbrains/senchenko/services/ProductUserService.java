@@ -6,6 +6,7 @@ import ru.geekbrains.senchenko.entities.Product;
 import ru.geekbrains.senchenko.repositories.ProductRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductUserService {
@@ -25,4 +26,7 @@ public class ProductUserService {
         return productRepository.findProductById(id);
     }
 
+    public Optional<Product> findById(Long id) {
+        return productRepository.findById(id);
+    }
 }
