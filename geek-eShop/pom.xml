@@ -29,6 +29,7 @@
         <module>eshop_admin_ui</module>
         <module>eshop_ui</module>
         <module>spring-cloud-config</module>
+        <module>eshop-admin-ui-test</module>
     </modules>
 
     <dependencyManagement>
