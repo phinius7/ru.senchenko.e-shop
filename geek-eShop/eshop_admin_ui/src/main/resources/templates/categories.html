@@ -11,7 +11,7 @@
     <div th:replace="fragments/sidebar :: sidebar"></div>
 
     <div class="content p-4">
-        <h2 class="mb-4">View category list</h2>
+        <h2 id="category-page" class="mb-4">View category list</h2>
         <div class="card mb-4">
             <div class="card-body">
                 <table id="categories" class="table table-hover" cellspacing="0" width="100%">
@@ -41,7 +41,7 @@
                 </table>
             </div>
             <div class="card-body">
-                <a class="btn btn-primary btn-lg btn-block btn-pill" th:href="@{'/categories/add/'}">Create</a>
+                <a id="create-btn" class="btn btn-primary btn-lg btn-block btn-pill" th:href="@{'/categories/add/'}">Create</a>
             </div>
         </div>
     </div>

@@ -5,12 +5,11 @@
 <body class="bg-light">
 <div th:fragment="sidebar" class="sidebar sidebar-dark bg-dark">
     <ul class="list-unstyled">
-        <li><a th:href="@{/roles}"><i class="fa fa-fw fa-link"></i> Roles</a></li>
-        <li><a th:href="@{/users}"><i class="fa fa-fw fa-link"></i> Users</a></li>
-        <li><a th:href="@{/categories}"><i class="fa fa-fw fa-link"></i> Categories</a></li>
-        <li><a th:href="@{/products}"><i class="fa fa-fw fa-link"></i> Products</a></li>
-        <li><a th:href="@{/brands}"><i class="fa fa-fw fa-link"></i> Brands</a></li>
-        <li><a th:href="@{/blogs}"><i class="fa fa-fw fa-link"></i> Blogs</a></li>
+        <li><a id="inp-users" th:href="@{/users}"><i class="fa fa-fw fa-link"></i> Users</a></li>
+        <li><a id="inp-categories" th:href="@{/categories}"><i class="fa fa-fw fa-link"></i> Categories</a></li>
+        <li><a id="inp-products" th:href="@{/products}"><i class="fa fa-fw fa-link"></i> Products</a></li>
+        <li><a id="inp-brands" th:href="@{/brands}"><i class="fa fa-fw fa-link"></i> Brands</a></li>
+        <li><a id="inp-blogs" th:href="@{/blogs}"><i class="fa fa-fw fa-link"></i> Blogs</a></li>
     </ul>
 </div>
 

@@ -12,14 +12,14 @@
     <div th:replace="fragments/sidebar :: sidebar"></div>
 
     <div class="content p-4">
-        <h2 class="mb-4">Add Category Form</h2>
+        <h2 id="add-form-page" class="mb-4">Add Category Form</h2>
 
         <form method="post" th:action="@{/categories/add}" th:object="${category}" enctype="multipart/form-data">
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="form-group">
-                        <label for="title">Category name</label>
-                        <input th:field="*{title}" type="text" class="form-control" id="title"
+                        <label for="ipn-title">Category name</label>
+                        <input th:field="*{title}" type="text" class="form-control" id="ipn-title"
                                placeholder="Enter Category name" required>
                     </div>
                     <div class="form-group">
@@ -32,7 +32,7 @@
                         <input th:field="*{pictures}" type="file" class="form-control" id="picture"
                                placeholder="Upload new category picture">
                     </div>
-                    <button class="btn btn-success btn-pill" type="submit">Add</button>
+                    <button id="add-btn" class="btn btn-success btn-pill" type="submit">Add</button>
                     <a class="btn btn-danger btn-pill" th:href="@{/categories/add}">Clear</a>
                     <a class="btn btn-primary btn-pill" th:href="@{/categories}">Back</a>
                 </div>
